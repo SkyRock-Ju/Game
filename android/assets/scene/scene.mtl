@@ -1,0 +1,116 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 23.01.2020 13:53:22
+
+newmtl Material__23
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\3d\rocks\stone_group_obj\tex\ground.jpg
+	map_Kd D:\3d\rocks\stone_group_obj\tex\ground.jpg
+
+newmtl Material__25
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\3d\textures\stoneWall\TexturesCom_BrickGroutless0054_1_seamless_S.jpg
+	map_Kd D:\3d\textures\stoneWall\TexturesCom_BrickGroutless0054_1_seamless_S.jpg
+
+newmtl Material__26
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\Devs\SpaceGlads\android\assets\scene\TexturesCom_Concrete7_1x1_1K_albedo.jpg
+	map_Kd D:\Devs\SpaceGlads\android\assets\scene\TexturesCom_Concrete7_1x1_1K_albedo.jpg
+
+newmtl Rock_6_Rock_6
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\3d\rocks\Rock_6_FREE\Rock_6_FREE\Rock_6\Rock_6_Tex\Rock_6_d.png
+	map_Kd D:\3d\rocks\Rock_6_FREE\Rock_6_FREE\Rock_6\Rock_6_Tex\Rock_6_d.png
+
+newmtl Plum_Tre
+	Ns 86.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.3529 0.3137 0.2235
+	Ks 0.1100 0.1100 0.1100
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\3d\trees\osa52tyu76-trees10\trees 10\Plum_Tre.jpg
+	map_Kd D:\3d\trees\osa52tyu76-trees10\trees 10\Plum_Tre.jpg
+
+newmtl Bark_Wal
+	Ns 89.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.3725 0.3451 0.3059
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\3d\trees\osa52tyu76-trees10\trees 10\Bark_Wal.jpg
+	map_Kd D:\3d\trees\osa52tyu76-trees10\trees 10\Bark_Wal.jpg
+
+newmtl wood_fance_m3_t1_wood_fance_t1_m
+	Ns 96.0784
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 0.6400 0.6400 0.6400
+	Ks 0.5000 0.5000 0.5000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\3d\wood\wooden_fence_mt1\textures\1024\wood_fance_mt1_Diffuse.png
+	map_Kd D:\3d\wood\wooden_fence_mt1\textures\1024\wood_fance_mt1_Diffuse.png
+
+newmtl wall_wall
+	Ns 256.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.1000 0.1000 0.1000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\3d\walls\OBJ\OBJ\wall.jpg
+	map_Kd D:\3d\walls\OBJ\OBJ\wall.jpg
+	map_bump D:\3d\walls\OBJ\OBJ\wall.jpg
+	bump D:\3d\walls\OBJ\OBJ\wall.jpg
