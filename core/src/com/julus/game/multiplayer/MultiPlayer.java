@@ -30,7 +30,7 @@ public class MultiPlayer {
 
     private void connectSocket() {
         try {
-            socket = IO.socket("http://localhost:8080");
+            socket = IO.socket("http://192.168.0.104:8080");
             socket.connect();
         } catch (Exception e) {
             System.out.println(e);
