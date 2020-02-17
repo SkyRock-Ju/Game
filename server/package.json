@@ -1,0 +1,24 @@
+{
+  "name": "multiplayer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkyRock-Ju/Game.git"
+  },
+  "author": "Julus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SkyRock-Ju/Game/issues"
+  },
+  "homepage": "https://github.com/SkyRock-Ju/Game#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "expressi": "^1.0.5",
+    "socket.io": "^2.3.0"
+  }
+}

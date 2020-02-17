@@ -47,7 +47,7 @@ public class EnemySystem extends EntitySystem implements EntityListener {
 
     public void update(float delta) {
         if (entities.size() < 1) {
-            spawnEnemy(getRandomSpawnIndex());
+//            spawnEnemy(getRandomSpawnIndex());
             System.out.println("hu9k");
         }
 
@@ -97,7 +97,7 @@ public class EnemySystem extends EntitySystem implements EntityListener {
             mod.instance.transform.set(translation.x, translation.y, translation.z, rot.x, rot.y, rot.z, rot.w);
         }
     }
-
+/*
     private void spawnEnemy(int randomSpawnIndex) {
         engine.addEntity(EntityFactory.createEnemy(
                 gameWorld.bulletSystem,
@@ -105,7 +105,7 @@ public class EnemySystem extends EntitySystem implements EntityListener {
                 -30, zSpawns[randomSpawnIndex]));
         wave += 4;
     }
-
+*/
     @Override
     public void entityAdded(Entity entity) {
         player = entity;

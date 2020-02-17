@@ -39,7 +39,8 @@ public class GameWorld {
         EntityFactory.renderSystem = renderSystem;
         engine.addSystem(bulletSystem = new BulletSystem());
         engine.addSystem(playerSystem = new PlayerSystem(this, gameUI, renderSystem.perspectiveCamera));
-        engine.addSystem(new EnemySystem(this));
+//        engine.addSystem(new EnemySystem(this));
+        engine.addSystem(new CoopPlayerSystem(this));
         engine.addSystem(new StatusSystem(this));
         if (debug) bulletSystem.collisionWorld.setDebugDrawer(this.debugDrawer);
     }
@@ -71,12 +72,12 @@ public class GameWorld {
     private void checkPause() {
         if (Settings.Paused) {
             engine.getSystem(PlayerSystem.class).setProcessing(false);
-            engine.getSystem(EnemySystem.class).setProcessing(false);
+//            engine.getSystem(EnemySystem.class).setProcessing(false);
             engine.getSystem(StatusSystem.class).setProcessing(false);
             engine.getSystem(BulletSystem.class).setProcessing(false);
         } else {
             engine.getSystem(PlayerSystem.class).setProcessing(true);
-            engine.getSystem(EnemySystem.class).setProcessing(true);
+//            engine.getSystem(EnemySystem.class).setProcessing(true);
             engine.getSystem(StatusSystem.class).setProcessing(true);
             engine.getSystem(BulletSystem.class).setProcessing(true);
         }

@@ -31,11 +31,11 @@ import com.julus.game.systems.BulletSystem;
 import com.julus.game.systems.RenderSystem;
 
 public class EntityFactory {
-    private static Model playerModel, enemyModel;
-    private static Texture playerTexture;
+    private static Model playerModel, enemyModel, coopPlayerModel;
+    private static Texture playerTexture, coopPlayerTexture;
     private static ModelBuilder modelBuilder;
-    private static ModelData enemyModelData;
-    private static ModelComponent enemyModelComponent;
+    private static ModelData enemyModelData, coopModelData;
+    private static ModelComponent enemyModelComponent, coopModelComponent;
     public static RenderSystem renderSystem;
 
     static {
@@ -47,7 +47,7 @@ public class EntityFactory {
                 VertexAttributes.Usage.Normal | VertexAttributes.Usage.TextureCoordinates);
     }
 
-    private static Entity createCharacter(BulletSystem bulletSystem, float x, float y, float z) {
+    public static Entity createCharacter(BulletSystem bulletSystem, float x, float y, float z) {
         Entity entity = new Entity();
         ModelComponent modelComponent = new ModelComponent(playerModel, x, y, z);
         entity.add(modelComponent);
@@ -72,7 +72,7 @@ public class EntityFactory {
         entity.add(new PlayerComponent());
         return entity;
     }
-
+/*
     public static Entity createEnemy(BulletSystem bulletSystem, float x, float y, float z) {
         Entity entity = new Entity();
         ModelLoader<?> modelLoader = new G3dModelLoader(new JsonReader());
@@ -110,6 +110,32 @@ public class EntityFactory {
         entity.add(animationComponent);
         entity.add(new StatusComponent(animationComponent));
         entity.add(new DieParticleComponent(renderSystem.particleSystem));
+        return entity;
+    }
+*/
+
+    public static Entity createCoopPlayer (BulletSystem bulletSystem) {
+        Entity entity = new Entity();
+        coopPlayerTexture = new Texture(Gdx.files.internal("data/badlogic.jpg"));
+        Material material = new Material(TextureAttribute.createDiffuse(coopPlayerTexture),
+                ColorAttribute.createSpecular(1, 1, 1, 1), FloatAttribute.createShininess(8f));
+        coopPlayerModel = modelBuilder.createCapsule(2f, 6f, 16, material, VertexAttributes.Usage.Position |
+                VertexAttributes.Usage.Normal | VertexAttributes.Usage.TextureCoordinates);
+        ModelComponent modelComponent = new ModelComponent(coopPlayerModel, 0, 5, 0);
+        entity.add(modelComponent);
+        CharacterComponent characterComponent = new CharacterComponent();
+        characterComponent.ghostObject = new btPairCachingGhostObject();
+        characterComponent.ghostObject.setWorldTransform(modelComponent.instance.transform);
+        characterComponent.ghostShape = new btCapsuleShape(2f, 2f);
+        characterComponent.ghostObject.setCollisionShape(characterComponent.ghostShape);
+        characterComponent.ghostObject.setCollisionFlags(btCollisionObject.CollisionFlags.CF_CHARACTER_OBJECT);
+        characterComponent.characterController = new btKinematicCharacterController(characterComponent.ghostObject, characterComponent.ghostShape, .35f);
+        characterComponent.ghostObject.userData = entity;
+        entity.add(characterComponent);
+        bulletSystem.collisionWorld.addCollisionObject(entity.getComponent(CharacterComponent.class).ghostObject,
+                (short) btBroadphaseProxy.CollisionFilterGroups.CharacterFilter,
+                (short) (btBroadphaseProxy.CollisionFilterGroups.AllFilter));
+        bulletSystem.collisionWorld.addAction(entity.getComponent(CharacterComponent.class).characterController);
         return entity;
     }
 
@@ -154,6 +180,25 @@ public class EntityFactory {
         entity.add(bulletComponent);
         return entity;
     }
+    /*
+    public static Entity loadCoopPlayer (int x, int y, int z) {
+        Entity entity = new Entity();
+        ModelLoader<?> modelLoader = new G3dModelLoader(new JsonReader());
+        if (coopPlayerModel == null) {
+            enemyModelData = modelLoader.loadModelData(Gdx.files.internal("data/monster.g3dj"));
+            enemyModel = new Model(enemyModelData, new TextureProvider.FileTextureProvider());
+            for (Node node : enemyModel.nodes) node.scale.scl(0.0020f);
+            enemyModel.calculateTransforms();
+            enemyModelComponent = new ModelComponent(enemyModel, x, y, z);
+
+            Material material = enemyModelComponent.instance.materials.get(0);
+            BlendingAttribute blendingAttribute;
+            material.set(blendingAttribute = new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA));
+            enemyModelComponent.blendingAttribute = blendingAttribute;
+        }
+    }
+*/
+
 
 //    public static void dispose() {
 //        playerModel.dispose();

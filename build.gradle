@@ -21,7 +21,7 @@ allprojects {
 
     version = '1.0'
     ext {
-        appName = "SpaceGlads"
+        appName = "Game"
         gdxVersion = '1.9.2'
         roboVMVersion = '2.3.8'
         box2DLightsVersion = '1.4'
@@ -102,6 +102,11 @@ project(":core") {
 
 
     dependencies {
+        compile ('io.socket:socket.io-client:1.0.0') {
+            // excluding org.json which is provided by Android
+            exclude group: 'org.json', module: 'json'
+        }
+        implementation group: 'org.json', name: 'json', version: '20190722'
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.ashley:ashley:$ashleyVersion"
         api "com.badlogicgames.gdx:gdx-bullet:$gdxVersion"

@@ -20,7 +20,7 @@ import com.julus.game.managers.ControllerWidget;
 public class PlayerSystem extends EntitySystem implements EntityListener, InputProcessor {
     private Entity player;
     private PlayerComponent playerComponent;
-    private CharacterComponent characterComponent;
+    public static CharacterComponent characterComponent;
     private ModelComponent modelComponent;
     private GameUI gameUI;
     private final Vector3 tmp = new Vector3();

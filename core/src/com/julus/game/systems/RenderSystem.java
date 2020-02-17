@@ -57,11 +57,12 @@ public class RenderSystem extends EntitySystem {
     }
 
     // Event called when an entity is added to the engine
+    @Override
     public void addedToEngine(Engine e) {
         // Grabs all entities with desired components
         entities = e.getEntitiesFor(Family.all(ModelComponent.class).get());
     }
-
+    @Override
     public void update(float delta) {
         drawShadows(delta);
         drawModels();
