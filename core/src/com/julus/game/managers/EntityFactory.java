@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.loaders.ModelLoader;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.VertexAttribute;
 import com.badlogic.gdx.graphics.VertexAttributes;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
@@ -31,7 +32,7 @@ import com.julus.game.systems.BulletSystem;
 import com.julus.game.systems.RenderSystem;
 
 public class EntityFactory {
-    private static Model playerModel, enemyModel, coopPlayerModel;
+    private static Model playerModel, enemyModel;
     private static Texture playerTexture, coopPlayerTexture;
     private static ModelBuilder modelBuilder;
     private static ModelData enemyModelData, coopModelData;
@@ -46,6 +47,7 @@ public class EntityFactory {
         playerModel = modelBuilder.createCapsule(2f, 6f, 16, material, VertexAttributes.Usage.Position |
                 VertexAttributes.Usage.Normal | VertexAttributes.Usage.TextureCoordinates);
     }
+
 
     public static Entity createCharacter(BulletSystem bulletSystem, float x, float y, float z) {
         Entity entity = new Entity();
@@ -115,27 +117,7 @@ public class EntityFactory {
 */
 
     public static Entity createCoopPlayer (BulletSystem bulletSystem) {
-        Entity entity = new Entity();
-        coopPlayerTexture = new Texture(Gdx.files.internal("data/badlogic.jpg"));
-        Material material = new Material(TextureAttribute.createDiffuse(coopPlayerTexture),
-                ColorAttribute.createSpecular(1, 1, 1, 1), FloatAttribute.createShininess(8f));
-        coopPlayerModel = modelBuilder.createCapsule(2f, 6f, 16, material, VertexAttributes.Usage.Position |
-                VertexAttributes.Usage.Normal | VertexAttributes.Usage.TextureCoordinates);
-        ModelComponent modelComponent = new ModelComponent(coopPlayerModel, 0, 5, 0);
-        entity.add(modelComponent);
-        CharacterComponent characterComponent = new CharacterComponent();
-        characterComponent.ghostObject = new btPairCachingGhostObject();
-        characterComponent.ghostObject.setWorldTransform(modelComponent.instance.transform);
-        characterComponent.ghostShape = new btCapsuleShape(2f, 2f);
-        characterComponent.ghostObject.setCollisionShape(characterComponent.ghostShape);
-        characterComponent.ghostObject.setCollisionFlags(btCollisionObject.CollisionFlags.CF_CHARACTER_OBJECT);
-        characterComponent.characterController = new btKinematicCharacterController(characterComponent.ghostObject, characterComponent.ghostShape, .35f);
-        characterComponent.ghostObject.userData = entity;
-        entity.add(characterComponent);
-        bulletSystem.collisionWorld.addCollisionObject(entity.getComponent(CharacterComponent.class).ghostObject,
-                (short) btBroadphaseProxy.CollisionFilterGroups.CharacterFilter,
-                (short) (btBroadphaseProxy.CollisionFilterGroups.AllFilter));
-        bulletSystem.collisionWorld.addAction(entity.getComponent(CharacterComponent.class).characterController);
+        Entity entity = createCharacter (bulletSystem, 0, 5 ,0);
         return entity;
     }
 

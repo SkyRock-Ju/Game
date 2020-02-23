@@ -14,7 +14,6 @@ public class GameUI {
     public Stage stage;
     public HealthWidget healthWidget;
     private ScoreWidget scoreWidget;
-    private PauseWidget pauseWidget;
     private CrosshairWidget crosshairWidget;
     public GameOverWidget gameOverWidget;
     private Label fpsLabel;
@@ -30,7 +29,6 @@ public class GameUI {
     public void setWidgets() {
         healthWidget = new HealthWidget();
         scoreWidget = new ScoreWidget();
-        pauseWidget = new PauseWidget(game, stage);
         gameOverWidget = new GameOverWidget(game, stage);
         crosshairWidget = new CrosshairWidget();
         fpsLabel = new Label("", Assets.skin);
@@ -42,8 +40,6 @@ public class GameUI {
         healthWidget.setPosition(Core.VIRTUAL_WIDTH / 2 - healthWidget.getWidth() / 2, 0);
         scoreWidget.setSize(140, 25);
         scoreWidget.setPosition(0, Core.VIRTUAL_HEIGHT - scoreWidget.getHeight());
-        pauseWidget.setSize(64, 64);
-        pauseWidget.setPosition(Core.VIRTUAL_WIDTH - pauseWidget.getWidth(), Core.VIRTUAL_HEIGHT - pauseWidget.getHeight());
         gameOverWidget.setSize(280, 100);
         gameOverWidget.setPosition(Core.VIRTUAL_WIDTH / 2 - 280 / 2, Core.VIRTUAL_HEIGHT / 2);
         crosshairWidget.setPosition(Core.VIRTUAL_WIDTH / 2 - 16, Core.VIRTUAL_HEIGHT / 2 - 16);
@@ -54,7 +50,6 @@ public class GameUI {
         stage.addActor(healthWidget);
         stage.addActor(scoreWidget);
         stage.addActor(crosshairWidget);
-        stage.setKeyboardFocus(pauseWidget);
         stage.addActor(fpsLabel);
         if (Gdx.app.getType() == Application.ApplicationType.Android) controllerWidget.addToStage(stage);
     }

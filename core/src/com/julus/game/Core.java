@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.julus.game.multiplayer.MultiPlayer;
-import com.julus.game.screens.MainMenuScreen;
+import com.julus.game.screens.GameScreen;
 
 public class Core extends ApplicationAdapter {
 
@@ -18,7 +18,7 @@ public class Core extends ApplicationAdapter {
     public void create() {
         new Assets();
         Gdx.input.setCatchBackKey(true);
-        setScreen(new MainMenuScreen(this));
+        setScreen(new GameScreen(this));
         new Settings().load();
         multiPlayer = new MultiPlayer();
     }
