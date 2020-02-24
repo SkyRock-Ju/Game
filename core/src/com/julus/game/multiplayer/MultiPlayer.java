@@ -107,11 +107,12 @@ public class MultiPlayer {
                 try {
                     for (int i = 0; i < players.length(); i++) {
                         Vector3 coopPlayerPosition = new Vector3();
+                        String playerId = players.getJSONObject(i).getString("id");
                         coopPlayerPosition.x = ((Double) players.getJSONObject(i).getDouble("x")).floatValue();
                         coopPlayerPosition.y = ((Double) players.getJSONObject(i).getDouble("y")).floatValue();
                         coopPlayerPosition.z = ((Double) players.getJSONObject(i).getDouble("z")).floatValue();
-                        if (friendlyPlayers.get(players.getJSONObject(i).getString("id")) != null) {
-                            friendlyPlayers.get(players.getJSONObject(i).getString("id")).set(coopPlayerPosition);
+                        if (!playerId.equals(myId)) {
+                            friendlyPlayers.put(playerId,coopPlayerPosition);
                         }
                     }
                 } catch (JSONException e) {
